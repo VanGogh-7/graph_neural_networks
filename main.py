@@ -1,10 +1,10 @@
 import torch
-from torch_geometric.data import Data
 
-edge_index = torch.tensor([[0, 1, 1, 2],
-                           [1, 0, 2, 1]], dtype=torch.long)
-x = torch.tensor([[-1], [0], [1]], dtype=torch.float)
+print(f"CUDA Available: {torch.cuda.is_available()}")
+print(f"PyTorch Version: {torch.__version__}")
+print(f"cuDNN Enabled: {torch.backends.cudnn.enabled}")
 
-data = Data(x=x, edge_index=edge_index)
-Data(edge_index=[2, 4], x=[3, 1])
+if torch.cuda.is_available():
+    print(f"CUDA Device: {torch.cuda.get_device_name(0)}")
+    print(f"CUDA Device Count: {torch.cuda.device_count()}")
 
